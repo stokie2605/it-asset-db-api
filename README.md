@@ -4,6 +4,10 @@ Built by Dean Wilshaw.
 
 IT Asset DB API is a lightweight Python and SQLite backend for tracking hardware assets across an organisation. It provides a simple asset register with insert and department-based query functions, making it suitable for service desk, MSP, and internal IT inventory workflows.
 
+## Terminal Preview
+
+![IT Asset DB API terminal output](screenshots/asset-api-preview.png)
+
 ## The Business Problem
 
 IT teams need reliable visibility of hardware assets: which devices exist, where they are assigned, and which department owns them. In many smaller environments, this data lives in spreadsheets, ticket notes, or technician memory. That makes audits slower, onboarding messier, and troubleshooting harder.
