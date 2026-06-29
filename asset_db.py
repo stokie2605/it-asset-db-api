@@ -190,41 +190,4 @@ def format_assets(assets: list[HardwareAsset]) -> str:
     return "\n".join(lines)
 
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="SQLite-backed IT hardware asset register.",
-    )
-    parser.add_argument(
-        "--department",
-        default="Finance",
-        help="Department to query after the demo assets are seeded.",
-    )
-    parser.add_argument(
-        "--db",
-        default=str(DATABASE_PATH),
-        help="SQLite database path. Defaults to it_assets.db.",
-    )
-    return parser.parse_args()
 
-
-def main() -> int:
-    args = parse_args()
-
-    try:
-        database_path = Path(args.db)
-        with connect(database_path) as connection:
-            initialize_database(connection)
-            seed_demo_assets(connection)
-            assets = query_assets_by_department(connection, args.department)
-
-        print(f"IT Asset DB API - Department Query: {args.department}")
-        print(format_assets(assets))
-        print(f"\nDatabase file: {database_path.resolve()}")
-        return 0
-    except (ValueError, sqlite3.Error) as exc:
-        print(f"ERROR: {exc}")
-        return 1
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
