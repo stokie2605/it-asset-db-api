@@ -8,6 +8,8 @@ from pydantic import BaseModel
 import asset_db
 
 
+from fastapi.middleware.cors import CORSMiddleware
+
 # Pydantic model for incoming requests
 class Asset(BaseModel):
     AssetID: str
@@ -32,6 +34,15 @@ app = FastAPI(
     description="A REST API for tracking hardware inventory.",
     version="1.0.0",
     lifespan=lifespan,
+)
+
+# Allow React frontend to access the API
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # For demo purposes, allow all origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
