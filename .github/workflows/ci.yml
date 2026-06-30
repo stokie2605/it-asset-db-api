@@ -1,4 +1,4 @@
-﻿name: CI
+name: CI
 
 on:
   push:
@@ -26,4 +26,4 @@ jobs:
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Verify syntax
-        run: python -m py_compile \
+        run: python -m py_compile $(find . -name "*.py" -not -path "*/.*" -not -path "*/venv/*")
