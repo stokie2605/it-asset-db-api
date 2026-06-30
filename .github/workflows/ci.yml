@@ -27,3 +27,6 @@ jobs:
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Verify syntax
         run: python -m py_compile $(find . -name "*.py" -not -path "*/.*" -not -path "*/venv/*")
+
+      - name: Run unit tests
+        run: python -m pytest
