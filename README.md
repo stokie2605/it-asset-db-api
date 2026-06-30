@@ -101,3 +101,9 @@ README.md          # Project documentation
 - Switch the SQLite backend to PostgreSQL using Supabase for production scalability.
 - Add JWT Authentication before exposing asset data beyond local networks.
 - Build a React frontend dashboard that consumes this API.
+
+## ✅ CI Pipeline & Verification
+
+This repository integrates a GitHub Actions CI workflow to ensure code health on every commit:
+- **Syntax Verification:** Automatically compiles all Python source files (`main.py`, `asset_db.py`) to confirm no structural syntax errors exist.
+- **Dependency Integrity:** Verifies that requirements install cleanly in the target environment.
